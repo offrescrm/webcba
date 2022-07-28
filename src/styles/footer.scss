@@ -1,0 +1,29 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+}
+.rgpd{
+    text-decoration: none;
+    color: black;
+}
+.trait{
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 18px;
+    //color: rgb(189, 204, 217);
+    border: 2px solid rgba(0, 0, 0, 0.09);
+    transform: rotate(-0.9deg);
+}
+
+h4,p{
+    margin-bottom: 0;
+}
