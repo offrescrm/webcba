@@ -5,12 +5,13 @@ import "../styles/footer.scss";
 const Footer = () => {
     return (
         <div className='footer'>
-            <div className='trait'></div>
-            <div>
+            {/*<div className='trait'></div>*/}
+            
                 <NavLink exact to="/RGPD" className="rgpd">
-                <h4>Mentions légales</h4>
+                <h4 className='h4'>Mentions légales</h4>
                 </NavLink>
-            </div>
+        
+
             <div>
                 <p>Copyright © 2022 Tous droits réservés</p>
             </div>

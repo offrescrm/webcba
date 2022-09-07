@@ -9,7 +9,7 @@ const RGPD = () => {
             <Header />
                 <div className='rgpd'>
                     <h2 className='h2'>Mentions légales</h2>
-                    <p>Vous êtes actuellement connecté au site internet sncf-webcba.com (ci-après le « Site »).<br/>
+                    <p>Vous êtes actuellement connecté au site internet sncf-webcba.com<br/>
 
                     <h3>Éditeur du Site</h3>
                     Le Site est édité par Société nationale SNCF, société anonyme au capital social de 1.000.000.000 €, immatriculée au Registre du Commerce et des Sociétés de Bobigny sous le numéro 552 049 447 et sous le numéro de SIRET 552 049 447 76279.
@@ -70,11 +70,11 @@ L’Utilisateur est informé que SNCF peut mettre fin ou modifier les caractéri
                 </div>
                 <div className='footeer'>
                 {/*<div className='trait'></div>*/}
-                <div>
+                
                     <NavLink exact to="/RGPD" className="rgpd">
                     <h4>Mentions légales</h4>
                     </NavLink>
-                </div>
+                
                 <div>
                     <p>Copyright © 2022 Tous droits réservés</p>
                 </div>
