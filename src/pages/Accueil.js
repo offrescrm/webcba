@@ -22,9 +22,6 @@ function Alert(props) {
 
 const Accueil = () => {
     
-    var privateKey = fs.readFileSync('../cle/prive.ppk')
-    var publicKey = fs.readFileSync('pub.ppk')
-
     const today= new Date();
     var jj=today.getDate();
     var mm=today.getMonth()+1;
