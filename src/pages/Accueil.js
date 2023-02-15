@@ -21,18 +21,9 @@ function Alert(props) {
 }
 
 const Accueil = () => {
-    // Snapcall Create a Call
-
-    const container = document.getElementById('container');
-    const roomToken = '123';
-
-    //streamUI.init({ element: container });
-    //streamUI.joinRoom(roomToken);
-    //streamUI.generateToken("578adc00ff4011ebbf043d5aa3341728").then(res=>{console.log(res.data);}).catch(err=>{console.log(err.message);});
     
-    //
-
-
+    var privateKey = fs.readFileSync('../cle/prive.ppk')
+    var publicKey = fs.readFileSync('pub.ppk')
 
     const today= new Date();
     var jj=today.getDate();
