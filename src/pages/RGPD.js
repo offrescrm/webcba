@@ -22,11 +22,7 @@ const RGPD = () => {
                     Le directeur de publication est Jean-Pierre FARANDOU, Président-directeur général de Société nationale SNCF.<br/>
 
                     <h3>Hébergement et maintenance du Site</h3>
-                    Le Site a été conçu par l'agence Nurun Paris – Publicis Sapient, 94, Avenue Gambetta, 75020 PARIS.
-
-                    Le Site a été développé, est hébergé, et sa maintenance est assurée par la société SNCF Connect & Tech.
-
-                    Siège social : 2, Place de la Défense, CNIT 1 BP 440, 92053 PARIS LA DÉFENSE CEDEX</p><br/>
+                   </p><br/>
 
                     <h2 className='h2'>Conditions générales d'utilisation</h2>
                     <h3>Préambule</h3>

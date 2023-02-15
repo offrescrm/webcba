@@ -9,13 +9,30 @@ import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import MuiAlert from "@material-ui/lab/Alert";
 import emailjs from 'emailjs-com';
+//import emailjs from '@emailjs/browser';
 import validator from 'validator';
+
+// Snapcall Create a Call
+import { streamUI } from '@snapcall/stream-ui';
+//
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const Accueil = () => {
+    // Snapcall Create a Call
+
+    const container = document.getElementById('container');
+    const roomToken = '123';
+
+    //streamUI.init({ element: container });
+    //streamUI.joinRoom(roomToken);
+    //streamUI.generateToken("578adc00ff4011ebbf043d5aa3341728").then(res=>{console.log(res.data);}).catch(err=>{console.log(err.message);});
+    
+    //
+
+
 
     const today= new Date();
     var jj=today.getDate();
@@ -59,14 +76,14 @@ const Accueil = () => {
             ...dbDatas,                         //mettre toutes les clés de dbDatas (ex: auteur, genre, ...) aux valeurs dans e.target.value
             [e.target.name] : e.target.value,   // on associe le champ name et le champ valeur ex: name:valeur => prenom:"Khadija"
         });
-        console.log(dbDatas);
+        //console.log(dbDatas.heure);
     }
 
     var getDispo='<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webcallback.callback.csi.avaya.com/"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsse:UsernameToken><wsse:Username>sncf</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">LnRlVkCnxGC0cKs3</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><web:getAvailability><web:configurationId>86</web:configurationId><web:timeZone>+2.0</web:timeZone></web:getAvailability></soapenv:Body></soapenv:Envelope>';
 
-    var requete='<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webcallback.callback.csi.avaya.com/"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsse:UsernameToken><wsse:Username>sncf</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">LnRlVkCnxGC0cKs3</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><web:createScheduledWebCallbackRequest><web:configurationId>86</web:configurationId><web:phoneNumber>'+dbDatas.numero+'</web:phoneNumber><web:timeZone>+2</web:timeZone><web:from>'+dbDatas.date+'T'+dbDatas.heure+':00+02:00</web:from><web:answers><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>PhoneNumber</mod:answerText><mod:questionId>231</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>CustomerName</mod:answerText><mod:questionId>230</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>CustomerFamilyName</mod:answerText><mod:questionId>232</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>Comments</mod:answerText><mod:questionId>233</mod:questionId></mod:TextAnswer></web:answers><web:siteId>2</web:siteId></web:createScheduledWebCallbackRequest></soapenv:Body></soapenv:Envelope>';
+    var requete='<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webcallback.callback.csi.avaya.com/"><soapenv:Header><wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><wsse:UsernameToken><wsse:Username>sncf</wsse:Username><wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">LnRlVkCnxGC0cKs3</wsse:Password></wsse:UsernameToken></wsse:Security></soapenv:Header><soapenv:Body><web:createScheduledWebCallbackRequest><web:configurationId>86</web:configurationId><web:phoneNumber>'+dbDatas.numero+'</web:phoneNumber><web:timeZone>+2</web:timeZone><web:from>'+dbDatas.date+'T'+dbDatas.heure+':00+01:00</web:from><web:answers><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>PhoneNumber</mod:answerText><mod:questionId>231</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>CustomerName</mod:answerText><mod:questionId>230</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>CustomerFamilyName</mod:answerText><mod:questionId>232</mod:questionId></mod:TextAnswer><mod:TextAnswer xmlns:mod="http://model.webcallback.callback.csi.avaya.com"><mod:answerText>Comments</mod:answerText><mod:questionId>233</mod:questionId></mod:TextAnswer></web:answers><web:siteId>2</web:siteId></web:createScheduledWebCallbackRequest></soapenv:Body></soapenv:Envelope>';
 
-    
+    var test=""
     const handleSubmit=(e)=>{
         
             axios.post('http://10.106.32.53:8081/webcallback/WebCallback418?wsdl=WebCallbackWs418.wsdl',
@@ -74,13 +91,19 @@ const Accueil = () => {
             {headers:
                 {'Content-Type': 'text/xml'}
             }).then(res=>{
-                console.log(res.data);
+                //console.log(res.data);
+                alert('Demande de rappel prise en compte avec succès');
             }).catch(err=>{
-                console.log(err.message)
+                
+                console.log(err.message);
+                alert("Demande de rappel non prise en compte !");
+                test=(err.message); //console.log("test=>",test);
+                
             });
             
+            //console.log("test=>",test);
             e.preventDefault();
-            emailjs.sendForm('service_rp9d68g','template_pzabtfp',e.target, 'rzyy5LUFy2ka_vB7E').then(res=>{alert('Demande de rappel prise en compte avec succès')}).catch(err=>{alert("Entrez une adresse email valide svp !");console.log(err);});
+            emailjs.sendForm('service_lnbi32t','template_rh6rjzd',e.target, 'HJpVlmndbM4gVTrgh').then(res=>{/*console.log('Demande de rappel prise en compte avec succès')*/}).catch(err=>{console.log("Erreur d'envoi d'email !");console.log(err);});
             
     }
 
@@ -118,9 +141,9 @@ const Accueil = () => {
 
                     <form className='form' onSubmit={handleSubmit}>
                         <h2 style={{'marginTop':'10px'}}>Informations personnelles</h2>
-                        <input className="nomprenom" onChange={handleChange} type="text" name="prenom" placeholder='Prénom' required/> <br/><br/>
+                        <input className="nomprenom" onChange={handleChange} type="text" name="prenom" placeholder='Prénom'/> <br/><br/>
                         
-                        <input className="nomprenom" onChange={handleChange} type="text" name="nom" placeholder='Nom'  required/><br/><br/>
+                        <input className="nomprenom" onChange={handleChange} type="text" name="nom" placeholder='Nom'/><br/><br/>
 
                         <input className="nomprenom" onChange={handleChange} type="tel" name="numero" placeholder='Numéro de téléphone' required/><br/><br/>
                         <input className="nomprenom"  type="email" name="email" placeholder='Email'  required/>
